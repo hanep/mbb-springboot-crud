@@ -1,4 +1,7 @@
+/Users/MYU07962/Documents/git/mbb-springboot-crud/src/main/java/com/mbbproject/spring/data/mongodb/model/Account.java
+/Users/MYU07962/Documents/git/mbb-springboot-crud/src/main/java/com/mbbproject/spring/data/mongodb/controller/AccountController.java
 /Users/MYU07962/Documents/git/mbb-springboot-crud/src/main/java/com/mbbproject/spring/data/mongodb/SpringBootDataMongodbApplication.java
+/Users/MYU07962/Documents/git/mbb-springboot-crud/src/main/java/com/mbbproject/spring/data/mongodb/repository/AccountRepository.java
 /Users/MYU07962/Documents/git/mbb-springboot-crud/src/main/java/com/mbbproject/spring/data/mongodb/repository/CustomerRepository.java
 /Users/MYU07962/Documents/git/mbb-springboot-crud/src/main/java/com/mbbproject/spring/data/mongodb/controller/CustomerController.java
 /Users/MYU07962/Documents/git/mbb-springboot-crud/src/main/java/com/mbbproject/spring/data/mongodb/model/Customer.java
