@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +28,7 @@ public class CustomerController {
   @Autowired
   CustomerRepository customerRepository;
 
-  @GetMapping("/customers")
+  @GetMapping("/customer")
   public ResponseEntity<List<Customer>> getAllCustomers(@RequestParam(required = false) String name) {
     try {
       List<Customer> customers = new ArrayList<Customer>();
@@ -49,7 +48,7 @@ public class CustomerController {
     }
   }
 
-  @GetMapping("/customers/{id}")
+  @GetMapping("/customer/{id}")
   public ResponseEntity<Customer> getCustomersById(@PathVariable("id") String id) {
     Optional<Customer> customerData = customerRepository.findById(id);
 
@@ -60,7 +59,7 @@ public class CustomerController {
     }
   }
 
-  @PostMapping("/customers")
+  @PostMapping("/customer")
   public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
     try {
       Customer _customer = customerRepository.save(new Customer(customer.getName()));
@@ -70,7 +69,7 @@ public class CustomerController {
     }
   }
 
-  @PutMapping("/customers/{id}")
+  @PutMapping("/customer/{id}")
   public ResponseEntity<Customer> updateCustomer(@PathVariable("id") String id, @RequestBody Customer customer) {
     Optional<Customer> customerData = customerRepository.findById(id);
 
@@ -80,26 +79,6 @@ public class CustomerController {
       return new ResponseEntity<>(customerRepository.save(_customer), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-  }
-
-  @DeleteMapping("/customers/{id}")
-  public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable("id") String id) {
-    try {
-      customerRepository.deleteById(id);
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-  }
-
-  @DeleteMapping("/customers")
-  public ResponseEntity<HttpStatus> deleteAllCustomers() {
-    try {
-      customerRepository.deleteAll();
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 

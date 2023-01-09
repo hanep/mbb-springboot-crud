@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +28,7 @@ public class AccountController {
   @Autowired
   AccountRepository accountRepository;
 
-  @GetMapping("/accounts")
+  @GetMapping("/account")
   public ResponseEntity<List<Account>> getAllAccounts(@RequestParam(required = false) String accountNumber) {
     try {
       List<Account> accounts = new ArrayList<Account>();
@@ -49,7 +48,7 @@ public class AccountController {
     }
   }
 
-  @GetMapping("/accounts/{id}")
+  @GetMapping("/account/{id}")
   public ResponseEntity<Account> getAccountById(@PathVariable("id") String id) {
     Optional<Account> accountData = accountRepository.findById(id);
 
@@ -60,17 +59,17 @@ public class AccountController {
     }
   }
 
-  @PostMapping("/accounts")
+  @PostMapping("/account")
   public ResponseEntity<Account> createAccount(@RequestBody Account account) {
     try {
-      Account _account = accountRepository.save(new Account(account.getAccountNumber(), account.getAccountType(), account.getAccountStatus()));
+      Account _account = accountRepository.save(new Account(account.getAccountNumber(), account.getAccountType(), account.getAccountStatus(), account.getAccountCustomerId()));
       return new ResponseEntity<>(_account, HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
-  @PutMapping("/accounts/{id}")
+  @PutMapping("/account/{id}")
   public ResponseEntity<Account> updateAccount(@PathVariable("id") String id, @RequestBody Account account) {
     Optional<Account> accountData = accountRepository.findById(id);
 
@@ -84,25 +83,4 @@ public class AccountController {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
-
-  @DeleteMapping("/accounts/{id}")
-  public ResponseEntity<HttpStatus> deleteAccount(@PathVariable("id") String id) {
-    try {
-      accountRepository.deleteById(id);
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-  }
-
-  @DeleteMapping("/accounts")
-  public ResponseEntity<HttpStatus> deleteAllAccounts() {
-    try {
-      accountRepository.deleteAll();
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-  }
-
 }
