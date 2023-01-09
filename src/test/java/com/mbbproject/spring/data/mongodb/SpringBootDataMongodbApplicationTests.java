@@ -1,10 +1,10 @@
-package com.mbbspringbootcrud.mbb;
+package com.mbbproject.spring.data.mongodb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MbbApplicationTests {
+class SpringBootDataMongodbApplicationTests {
 
 	@Test
 	void contextLoads() {

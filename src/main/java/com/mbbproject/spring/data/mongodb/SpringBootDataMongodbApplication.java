@@ -1,13 +1,13 @@
-package com.mbbspringbootcrud.mbb;
+package com.mbbproject.spring.data.mongodb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MbbApplication {
+public class SpringBootDataMongodbApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MbbApplication.class, args);
+		SpringApplication.run(SpringBootDataMongodbApplication.class, args);
 	}
 
 }

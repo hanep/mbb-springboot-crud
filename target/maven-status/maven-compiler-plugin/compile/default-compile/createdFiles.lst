@@ -1,0 +1,4 @@
+com/mbbproject/spring/data/mongodb/model/Customer.class
+com/mbbproject/spring/data/mongodb/SpringBootDataMongodbApplication.class
+com/mbbproject/spring/data/mongodb/controller/CustomerController.class
+com/mbbproject/spring/data/mongodb/repository/CustomerRepository.class
