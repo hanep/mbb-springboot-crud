@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,19 +65,6 @@ public class CustomerController {
       return new ResponseEntity<>(_customer, HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-  }
-
-  @PutMapping("/customer/{id}")
-  public ResponseEntity<Customer> updateCustomer(@PathVariable("id") String id, @RequestBody Customer customer) {
-    Optional<Customer> customerData = customerRepository.findById(id);
-
-    if (customerData.isPresent()) {
-      Customer _customer = customerData.get();
-      _customer.setName(customer.getName());
-      return new ResponseEntity<>(customerRepository.save(_customer), HttpStatus.OK);
-    } else {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
 
